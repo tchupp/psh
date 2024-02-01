@@ -1,0 +1,11 @@
+(1+
+===
+SourceFile@0..3
+  ParenExpr@0..3
+    LParen@0..1 "("
+    InfixExpr@1..3
+      IntLiteral@1..2
+        Integer@1..2 "1"
+      Plus@2..3 "+"
+error at position 3 while parsing an expression inside parentheses. Missing expected integer, fraction, string, identifier, ‘-’, ‘(’ or ‘if‘
+error at position 3 while parsing a close parenthesis after an expression. Missing expected ‘)’

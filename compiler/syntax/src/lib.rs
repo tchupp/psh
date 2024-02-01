@@ -38,6 +38,29 @@ pub enum SyntaxKind {
     Pipe,
     Comment,
     Error,
+
+    SourceFile,
+    Path,
+    VariableRef,
+    ValueDef,
+
+    StringLiteral,
+    IntLiteral,
+    FractionLiteral,
+    UnaryExpr,
+    InfixExpr,
+
+    IfExpr,
+    ThenExpr,
+    ElseExpr,
+    IfThenElseExpr,
+
+    Unit,
+    ParenExpr,
+    ParenPattern,
+    TupleExpr,
+    TuplePattern,
+    TuplePatternArg,
 }
 
 impl From<TokenKind> for SyntaxKind {

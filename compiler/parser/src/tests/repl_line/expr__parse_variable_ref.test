@@ -1,0 +1,6 @@
+counter
+===
+SourceFile@0..7
+  VariableRef@0..7
+    Path@0..7
+      Ident@0..7 "counter"

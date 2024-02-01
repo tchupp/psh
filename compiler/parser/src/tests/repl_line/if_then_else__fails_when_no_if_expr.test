@@ -1,0 +1,19 @@
+if then 2 else 3
+===
+SourceFile@0..16
+  IfThenElseExpr@0..16
+    IfKw@0..2 "if"
+    Whitespace@2..3 " "
+    IfExpr@3..3
+    ThenKw@3..7 "then"
+    Whitespace@7..8 " "
+    ThenExpr@8..10
+      IntLiteral@8..10
+        Integer@8..9 "2"
+        Whitespace@9..10 " "
+    ElseKw@10..14 "else"
+    Whitespace@14..15 " "
+    ElseExpr@15..16
+      IntLiteral@15..16
+        Integer@15..16 "3"
+error at position 3 while parsing the conditional expression in an if-then-else expression. Missing expected integer, fraction, string, identifier, ‘-’, ‘(’ or ‘if‘
