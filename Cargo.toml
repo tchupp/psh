@@ -1,6 +1,7 @@
 [workspace]
 members = [
     "compiler/lexer",
+    "compiler/syntax",
 ]
 
 resolver = "2"
