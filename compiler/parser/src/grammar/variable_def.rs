@@ -6,7 +6,11 @@ pub(crate) fn parse_variable_def(p: &mut Parser) -> CompletedMarker {
     let m = p.start();
     p.bump(TokenKind::LetKw);
 
-    ident::parse_ident(p, ParseErrorContext::VariableDefIdent, ts![TokenKind::Equals]);
+    ident::parse_ident(
+        p,
+        ParseErrorContext::VariableDefIdent,
+        ts![TokenKind::Equals],
+    );
     p.expect_with_recovery(
         TokenKind::Equals,
         ParseErrorContext::VariableDefEquals,

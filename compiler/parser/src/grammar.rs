@@ -9,7 +9,6 @@ use crate::ts;
 
 mod expr;
 mod ident;
-mod path;
 mod stmt;
 mod variable_def;
 

@@ -1,14 +1,13 @@
-funky(x)
+funky:(x)
 ===
-SourceFile@0..8
-  FunctionCall@0..8
+SourceFile@0..9
+  FunctionCall@0..9
     VariableRef@0..5
-      Path@0..5
-        Ident@0..5 "funky"
-    FunctionCallArgList@5..8
-      ParenExpr@5..8
-        LParen@5..6 "("
-        VariableRef@6..7
-          Path@6..7
-            Ident@6..7 "x"
-        RParen@7..8 ")"
+      Ident@0..5 "funky"
+    FunctionCallArgList@5..9
+      Colon@5..6 ":"
+      ParenExpr@6..9
+        LParen@6..7 "("
+        VariableRef@7..8
+          Ident@7..8 "x"
+        RParen@8..9 ")"

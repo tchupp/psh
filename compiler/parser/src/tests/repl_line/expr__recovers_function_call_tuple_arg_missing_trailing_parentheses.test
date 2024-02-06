@@ -1,6 +1,7 @@
-funky: (x, y, z)
+funky: (x, y, z
+let a = 1
 ===
-SourceFile@0..16
+SourceFile@0..25
   FunctionCall@0..16
     VariableRef@0..5
       Ident@0..5 "funky"
@@ -17,6 +18,16 @@ SourceFile@0..16
           Ident@11..12 "y"
         Comma@12..13 ","
         Whitespace@13..14 " "
-        VariableRef@14..15
+        VariableRef@14..16
           Ident@14..15 "z"
-        RParen@15..16 ")"
+          Whitespace@15..16 "\n"
+  VariableDef@16..25
+    LetKw@16..19 "let"
+    Whitespace@19..20 " "
+    Ident@20..21 "a"
+    Whitespace@21..22 " "
+    Equals@22..23 "="
+    Whitespace@23..24 " "
+    IntLiteral@24..25
+      Integer@24..25 "1"
+error at position 16 while parsing a close parenthesis after an expression. Missing expected ‘)’

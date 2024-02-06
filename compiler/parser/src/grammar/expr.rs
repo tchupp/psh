@@ -157,18 +157,15 @@ pub(crate) fn parse_string_literal(p: &mut Parser) -> CompletedMarker {
 }
 
 pub(crate) fn parse_variable_ref(p: &mut Parser) -> CompletedMarker {
-    let cm = path::parse_path(
-        p,
-        ParseErrorContext::VariableRef,
-        ts![],
-        SyntaxKind::VariableRef,
-    );
+    let m = p.start();
+    p.bump(TokenKind::Ident);
+    let cm = m.complete(p, SyntaxKind::VariableRef);
 
     maybe_parse_function_call(p, cm)
 }
 
 fn maybe_parse_function_call(p: &mut Parser, lhs: CompletedMarker) -> CompletedMarker {
-    if !p.at_set(EXPR_FIRSTS) {
+    if !p.maybe_at(TokenKind::Colon) {
         return lhs;
     }
 
@@ -179,6 +176,7 @@ fn maybe_parse_function_call(p: &mut Parser, lhs: CompletedMarker) -> CompletedM
 
 fn parse_function_call(p: &mut Parser) -> CompletedMarker {
     let paren_m = p.start();
+    p.bump(TokenKind::Colon);
 
     loop {
         if should_stop(p) {
@@ -265,7 +263,11 @@ fn parse_paren_expr(p: &mut Parser) -> CompletedMarker {
             break;
         }
 
-        parse_expr_with_recovery(p, ts![TokenKind::RParen], ParseErrorContext::ParenExprExpr);
+        parse_expr_with_recovery(
+            p,
+            ts![TokenKind::RParen, TokenKind::Comma],
+            ParseErrorContext::ParenExprExpr,
+        );
         arg_len += 1;
 
         if should_stop(p) {

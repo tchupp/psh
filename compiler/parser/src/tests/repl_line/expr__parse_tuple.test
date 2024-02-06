@@ -8,6 +8,5 @@ SourceFile@0..8
     Comma@2..3 ","
     Whitespace@3..4 " "
     VariableRef@4..7
-      Path@4..7
-        Ident@4..7 "foo"
+      Ident@4..7 "foo"
     RParen@7..8 ")"

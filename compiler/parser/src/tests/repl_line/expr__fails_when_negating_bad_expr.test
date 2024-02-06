@@ -1,8 +1,0 @@
--where
-===
-SourceFile@0..6
-  UnaryExpr@0..6
-    Minus@0..1 "-"
-    VariableRef@1..6
-      Path@1..6
-        Ident@1..6 "where"

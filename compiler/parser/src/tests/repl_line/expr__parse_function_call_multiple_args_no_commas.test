@@ -1,24 +1,17 @@
-funky x y z
+funky: x y z
 ===
-SourceFile@0..11
-  FunctionCall@0..11
-    VariableRef@0..6
-      Path@0..6
-        Ident@0..5 "funky"
-        Whitespace@5..6 " "
-    FunctionCallArgList@6..11
-      FunctionCall@6..11
-        VariableRef@6..8
-          Path@6..8
-            Ident@6..7 "x"
-            Whitespace@7..8 " "
-        FunctionCallArgList@8..11
-          FunctionCall@8..11
-            VariableRef@8..10
-              Path@8..10
-                Ident@8..9 "y"
-                Whitespace@9..10 " "
-            FunctionCallArgList@10..11
-              VariableRef@10..11
-                Path@10..11
-                  Ident@10..11 "z"
+SourceFile@0..12
+  FunctionCall@0..12
+    VariableRef@0..5
+      Ident@0..5 "funky"
+    FunctionCallArgList@5..12
+      Colon@5..6 ":"
+      Whitespace@6..7 " "
+      VariableRef@7..9
+        Ident@7..8 "x"
+        Whitespace@8..9 " "
+      VariableRef@9..11
+        Ident@9..10 "y"
+        Whitespace@10..11 " "
+      VariableRef@11..12
+        Ident@11..12 "z"
