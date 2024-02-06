@@ -157,12 +157,46 @@ pub(crate) fn parse_string_literal(p: &mut Parser) -> CompletedMarker {
 }
 
 pub(crate) fn parse_variable_ref(p: &mut Parser) -> CompletedMarker {
-    path::parse_path(
+    let cm = path::parse_path(
         p,
         ParseErrorContext::VariableRef,
         ts![],
         SyntaxKind::VariableRef,
-    )
+    );
+
+    maybe_parse_function_call(p, cm)
+}
+
+fn maybe_parse_function_call(p: &mut Parser, lhs: CompletedMarker) -> CompletedMarker {
+    if !p.at_set(EXPR_FIRSTS) {
+        return lhs;
+    }
+
+    parse_function_call(p);
+
+    lhs.precede(p).complete(p, SyntaxKind::FunctionCall)
+}
+
+fn parse_function_call(p: &mut Parser) -> CompletedMarker {
+    let paren_m = p.start();
+
+    loop {
+        if should_stop(p) {
+            break;
+        }
+
+        parse_expr_with_recovery(p, ts![], ParseErrorContext::FunctionCallArgExpr);
+
+        if p.maybe_at(TokenKind::Comma) {
+            p.bump(TokenKind::Comma);
+        }
+    }
+
+    return paren_m.complete(p, SyntaxKind::FunctionCallArgList);
+
+    fn should_stop(p: &mut Parser) -> bool {
+        p.maybe_at(TokenKind::Pipe) || p.at_top_level_token() || p.at_keyword()
+    }
 }
 
 fn parse_if_then_else_expr(p: &mut Parser) -> CompletedMarker {
@@ -231,18 +265,16 @@ fn parse_paren_expr(p: &mut Parser) -> CompletedMarker {
             break;
         }
 
-        parse_expr(p, ParseErrorContext::ParenExprExpr);
+        parse_expr_with_recovery(p, ts![TokenKind::RParen], ParseErrorContext::ParenExprExpr);
         arg_len += 1;
 
         if should_stop(p) {
             break;
         }
 
-        p.expect_with_recovery(
-            TokenKind::Comma,
-            ParseErrorContext::ParenExprComma,
-            EXPR_FIRSTS,
-        );
+        if p.maybe_at(TokenKind::Comma) {
+            p.bump(TokenKind::Comma);
+        }
     }
 
     p.expect(TokenKind::RParen, ParseErrorContext::ParenExprRightParen);
@@ -255,6 +287,6 @@ fn parse_paren_expr(p: &mut Parser) -> CompletedMarker {
     return paren_m.complete(p, kind);
 
     fn should_stop(p: &mut Parser) -> bool {
-        p.maybe_at(TokenKind::RParen) || p.at_eof()
+        p.maybe_at(TokenKind::RParen) || p.at_top_level_token()
     }
 }

@@ -18,9 +18,9 @@ pub(crate) enum ParseErrorKind {
 
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub(crate) enum ParseErrorContext {
+    FunctionCallArgExpr,
     PrefixExprExpr,
     ParenExprExpr,
-    ParenExprComma,
     ParenExprRightParen,
     IfThenElseIfExpr,
     IfThenElseThenKw,
@@ -38,9 +38,9 @@ impl ParseErrorContext {
     #[must_use]
     fn context_name<'a>(self) -> &'a str {
         match self {
+            ParseErrorContext::FunctionCallArgExpr => "a function call argument",
             ParseErrorContext::PrefixExprExpr => "an expression after a prefix operator",
             ParseErrorContext::ParenExprExpr => "an expression inside parentheses",
-            ParseErrorContext::ParenExprComma => "a comma between expressions inside parentheses",
             ParseErrorContext::ParenExprRightParen => "a close parenthesis after an expression",
             ParseErrorContext::IfThenElseIfExpr => {
                 "the conditional expression in an if-then-else expression"

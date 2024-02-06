@@ -4,18 +4,23 @@ SourceFile@0..16
   IfThenElseExpr@0..16
     IfKw@0..2 "if"
     Whitespace@2..3 " "
-    IfExpr@3..8
-      VariableRef@3..8
-        Path@3..8
-          Ident@3..7 "test"
-          Whitespace@7..8 " "
-    ThenExpr@8..10
-      IntLiteral@8..10
-        Integer@8..9 "2"
-        Whitespace@9..10 " "
-    ElseKw@10..14 "else"
-    Whitespace@14..15 " "
-    ElseExpr@15..16
+    IfExpr@3..10
+      FunctionCall@3..10
+        VariableRef@3..8
+          Path@3..8
+            Ident@3..7 "test"
+            Whitespace@7..8 " "
+        FunctionCallArgList@8..10
+          IntLiteral@8..10
+            Integer@8..9 "2"
+            Whitespace@9..10 " "
+    Error@10..15
+      ElseKw@10..14 "else"
+      Whitespace@14..15 " "
+    ThenExpr@15..16
       IntLiteral@15..16
         Integer@15..16 "3"
-error at position 8 while parsing the `then` keyword in an if-then-else expression. Missing expected ‘then‘
+    ElseExpr@16..16
+error in range 10..14 while parsing the `then` keyword in an if-then-else expression. Found ‘else‘, but expected ‘then‘
+error at position 16 while parsing the `else` keyword in an if-then-else expression. Missing expected ‘else‘
+error at position 16 while parsing the `else` expression in an if-then-else expression. Missing expected integer, fraction, string, identifier, ‘-’, ‘(’ or ‘if‘

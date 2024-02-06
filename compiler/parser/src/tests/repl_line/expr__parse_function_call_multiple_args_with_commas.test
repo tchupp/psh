@@ -1,0 +1,22 @@
+funky x, y, z
+===
+SourceFile@0..13
+  FunctionCall@0..13
+    VariableRef@0..6
+      Path@0..6
+        Ident@0..5 "funky"
+        Whitespace@5..6 " "
+    FunctionCallArgList@6..13
+      VariableRef@6..7
+        Path@6..7
+          Ident@6..7 "x"
+      Comma@7..8 ","
+      Whitespace@8..9 " "
+      VariableRef@9..10
+        Path@9..10
+          Ident@9..10 "y"
+      Comma@10..11 ","
+      Whitespace@11..12 " "
+      VariableRef@12..13
+        Path@12..13
+          Ident@12..13 "z"

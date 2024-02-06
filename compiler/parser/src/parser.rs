@@ -20,6 +20,13 @@ mod parse_error;
 
 pub(crate) const DEFAULT_RECOVERY_SET: TokenSet = ts![TokenKind::LetKw,];
 
+pub(crate) const KEYWORDS: TokenSet = ts![
+    TokenKind::LetKw,
+    TokenKind::IfKw,
+    TokenKind::ThenKw,
+    TokenKind::ElseKw,
+];
+
 pub(crate) struct Parser<'t, 'input> {
     source: Source<'t, 'input>,
     events: Vec<Event>,
@@ -65,7 +72,11 @@ impl<'t, 'input> Parser<'t, 'input> {
     }
 
     pub(crate) fn at_top_level_token(&mut self) -> bool {
-        self.at_set(DEFAULT_RECOVERY_SET)
+        self.at_set(DEFAULT_RECOVERY_SET) || self.at_eof()
+    }
+
+    pub(crate) fn at_keyword(&mut self) -> bool {
+        self.at_set(KEYWORDS)
     }
 
     pub(crate) fn at_eof(&mut self) -> bool {

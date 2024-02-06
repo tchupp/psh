@@ -49,6 +49,8 @@ pub enum SyntaxKind {
     FractionLiteral,
     UnaryExpr,
     InfixExpr,
+    FunctionCall,
+    FunctionCallArgList,
 
     IfExpr,
     ThenExpr,

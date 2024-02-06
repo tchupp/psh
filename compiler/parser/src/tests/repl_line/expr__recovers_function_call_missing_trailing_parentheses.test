@@ -1,0 +1,26 @@
+-- funky (x, y, z
+funky x
+let a = 1
+===
+SourceFile@0..35
+  Comment@0..17 "-- funky (x, y, z"
+  Whitespace@17..18 "\n"
+  FunctionCall@18..26
+    VariableRef@18..24
+      Path@18..24
+        Ident@18..23 "funky"
+        Whitespace@23..24 " "
+    FunctionCallArgList@24..26
+      VariableRef@24..26
+        Path@24..26
+          Ident@24..25 "x"
+          Whitespace@25..26 "\n"
+  ValueDef@26..35
+    LetKw@26..29 "let"
+    Whitespace@29..30 " "
+    Ident@30..31 "a"
+    Whitespace@31..32 " "
+    Equals@32..33 "="
+    Whitespace@33..34 " "
+    IntLiteral@34..35
+      Integer@34..35 "1"
