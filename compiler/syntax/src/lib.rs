@@ -10,6 +10,7 @@ pub type SyntaxElement = rowan::SyntaxElement<PshLanguage>;
 
 #[derive(Debug, Copy, Clone, Ord, PartialOrd, Eq, PartialEq, Hash, FromPrimitive, ToPrimitive)]
 pub enum SyntaxKind {
+    // Lexing Kinds
     Whitespace,
     LetKw,
     IfKw,
@@ -39,10 +40,11 @@ pub enum SyntaxKind {
     Comment,
     Error,
 
+    // Syntax Kinds
     SourceFile,
     Path,
     VariableRef,
-    ValueDef,
+    VariableDef,
 
     StringLiteral,
     IntLiteral,

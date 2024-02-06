@@ -11,7 +11,7 @@ mod expr;
 mod ident;
 mod path;
 mod stmt;
-mod value;
+mod variable_def;
 
 pub(crate) fn repl_line(p: &mut Parser) -> CompletedMarker {
     let m = p.start();

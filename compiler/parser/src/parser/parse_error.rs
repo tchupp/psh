@@ -27,9 +27,9 @@ pub(crate) enum ParseErrorContext {
     IfThenElseThenExpr,
     IfThenElseElseKw,
     IfThenElseElseExpr,
-    ValueDefIdent,
-    ValueDefEquals,
-    ValueDefExpr,
+    VariableDefIdent,
+    VariableDefEquals,
+    VariableDefExpr,
     VariableRef,
     TopLevelExpr,
 }
@@ -57,9 +57,9 @@ impl ParseErrorContext {
             ParseErrorContext::IfThenElseElseExpr => {
                 "the `else` expression in an if-then-else expression"
             }
-            ParseErrorContext::ValueDefIdent => "the name in a value definition",
-            ParseErrorContext::ValueDefEquals => "the ‘=’ in a value definition",
-            ParseErrorContext::ValueDefExpr => "the expression in a value definition",
+            ParseErrorContext::VariableDefIdent => "the name in a variable definition",
+            ParseErrorContext::VariableDefEquals => "the ‘=’ in a variable definition",
+            ParseErrorContext::VariableDefExpr => "the expression in a value definition",
             ParseErrorContext::VariableRef => "a variable reference",
             ParseErrorContext::TopLevelExpr => "a top level expression",
         }

@@ -19,7 +19,7 @@ SourceFile@0..22
             Comma@10..11 ","
         RParen@11..12 ")"
         Whitespace@12..13 "\n"
-  ValueDef@13..22
+  VariableDef@13..22
     LetKw@13..16 "let"
     Whitespace@16..17 " "
     Ident@17..18 "a"
