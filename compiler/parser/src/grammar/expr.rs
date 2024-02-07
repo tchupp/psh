@@ -58,6 +58,7 @@ const SUPPORTED_OPERATORS: TokenSet = ts![
     TokenKind::Minus,
     TokenKind::Star,
     TokenKind::Slash,
+    TokenKind::Pipe,
 ];
 
 fn parse_expr_with_binding_power(

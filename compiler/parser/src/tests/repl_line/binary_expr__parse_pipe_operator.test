@@ -1,0 +1,19 @@
+10 + 10 | -10
+===
+SourceFile@0..13
+  InfixExpr@0..13
+    InfixExpr@0..8
+      IntLiteral@0..3
+        Integer@0..2 "10"
+        Whitespace@2..3 " "
+      Plus@3..4 "+"
+      Whitespace@4..5 " "
+      IntLiteral@5..8
+        Integer@5..7 "10"
+        Whitespace@7..8 " "
+    Pipe@8..9 "|"
+    Whitespace@9..10 " "
+    UnaryExpr@10..13
+      Minus@10..11 "-"
+      IntLiteral@11..13
+        Integer@11..13 "10"
