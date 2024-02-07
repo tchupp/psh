@@ -30,7 +30,6 @@ pub(crate) enum ParseErrorContext {
     VariableDefIdent,
     VariableDefEquals,
     VariableDefExpr,
-    VariableRef,
     TopLevelExpr,
 }
 
@@ -59,8 +58,7 @@ impl ParseErrorContext {
             }
             ParseErrorContext::VariableDefIdent => "the name in a variable definition",
             ParseErrorContext::VariableDefEquals => "the ‘=’ in a variable definition",
-            ParseErrorContext::VariableDefExpr => "the expression in a value definition",
-            ParseErrorContext::VariableRef => "a variable reference",
+            ParseErrorContext::VariableDefExpr => "the expression in a variable definition",
             ParseErrorContext::TopLevelExpr => "a top level expression",
         }
     }
