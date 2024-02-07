@@ -66,13 +66,21 @@ fn parse_expr_with_binding_power(
     recovery_set: TokenSet,
     context: ParseErrorContext,
 ) -> Option<CompletedMarker> {
-    let mut lhs = parse_lhs(p, recovery_set, context)?;
+    let lhs = parse_lhs(p, recovery_set, context)?;
 
+    maybe_parse_binary_expr(p, lhs, minimum_binding_power, recovery_set, context)
+}
+
+fn maybe_parse_binary_expr(
+    p: &mut Parser,
+    mut lhs: CompletedMarker,
+    minimum_binding_power: u8,
+    recovery_set: TokenSet,
+    context: ParseErrorContext,
+) -> Option<CompletedMarker> {
     loop {
         if !p.at_set(SUPPORTED_OPERATORS) {
-            // We’re not at an operator we recognize;
-            // we don’t know what to do next, so we return and let caller decide.
-            break;
+            return Some(lhs);
         }
 
         let op = if p.at(TokenKind::Plus) {
@@ -92,7 +100,7 @@ fn parse_expr_with_binding_power(
         let (left_binding_power, right_binding_power) = op.binding_power();
 
         if left_binding_power < minimum_binding_power {
-            break;
+            return Some(lhs);
         }
 
         // Eat the operator’s token.
@@ -104,11 +112,9 @@ fn parse_expr_with_binding_power(
         lhs = m.complete(p, SyntaxKind::InfixExpr);
 
         if !parsed_rhs {
-            break;
+            return Some(lhs);
         }
     }
-
-    Some(lhs)
 }
 
 fn parse_lhs(
