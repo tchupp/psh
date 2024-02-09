@@ -1,0 +1,8 @@
+1+
+===
+SourceFile@0..2
+  InfixExpr@0..2
+    IntLiteral@0..1
+      Integer@0..1 "1"
+    Plus@1..2 "+"
+error at position 2 while parsing a top level expression. Missing expected integer, fraction, string, identifier, ‘-’, ‘(’ or ‘if‘

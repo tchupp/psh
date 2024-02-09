@@ -164,11 +164,12 @@ impl<'t, 'input> Parser<'t, 'input> {
             context,
         }));
 
-        if !self.at_set(recovery_set) && !self.at_eof() {
-            let m = self.start();
-            self.bump_any();
-            return Some(m.complete(self, SyntaxKind::Error));
-        };
-        None
+        if self.at_set(recovery_set) || self.at_eof() {
+            return None;
+        }
+
+        let m = self.start();
+        self.bump_any();
+        return Some(m.complete(self, SyntaxKind::Error));
     }
 }

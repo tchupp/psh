@@ -138,8 +138,7 @@ fn parse_lhs(
     } else if p.at(TokenKind::IfKw) {
         parse_if_then_else_expr(p)
     } else {
-        p.error_with_recovery(context, recovery_set);
-        return None;
+        return p.error_with_recovery(context, recovery_set);
     };
 
     Some(cm)

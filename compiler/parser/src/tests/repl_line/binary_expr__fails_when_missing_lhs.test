@@ -1,0 +1,11 @@
++ -10
+===
+SourceFile@0..5
+  InfixExpr@0..5
+    Error@0..2
+      Plus@0..1 "+"
+      Whitespace@1..2 " "
+    Minus@2..3 "-"
+    IntLiteral@3..5
+      Integer@3..5 "10"
+error in range 0..1 while parsing a top level expression. Found ‘+’, but expected ‘let’, integer, fraction, string, identifier, ‘-’, ‘(’ or ‘if‘
