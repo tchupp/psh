@@ -171,7 +171,7 @@ pub(crate) fn parse_variable_ref(p: &mut Parser) -> CompletedMarker {
 }
 
 fn maybe_parse_function_call(p: &mut Parser, lhs: CompletedMarker) -> CompletedMarker {
-    if !p.maybe_at(TokenKind::Colon) {
+    if !p.at_set(EXPR_FIRSTS) {
         return lhs;
     }
 
@@ -182,7 +182,6 @@ fn maybe_parse_function_call(p: &mut Parser, lhs: CompletedMarker) -> CompletedM
 
 fn parse_function_call(p: &mut Parser) -> CompletedMarker {
     let paren_m = p.start();
-    p.bump(TokenKind::Colon);
 
     loop {
         if should_stop(p) {

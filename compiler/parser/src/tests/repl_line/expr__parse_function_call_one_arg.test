@@ -1,11 +1,10 @@
-funky: x
+funky x
 ===
-SourceFile@0..8
-  FunctionCall@0..8
-    VariableRef@0..5
+SourceFile@0..7
+  FunctionCall@0..7
+    VariableRef@0..6
       Ident@0..5 "funky"
-    FunctionCallArgList@5..8
-      Colon@5..6 ":"
-      Whitespace@6..7 " "
-      VariableRef@7..8
-        Ident@7..8 "x"
+      Whitespace@5..6 " "
+    FunctionCallArgList@6..7
+      VariableRef@6..7
+        Ident@6..7 "x"

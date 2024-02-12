@@ -1,0 +1,16 @@
+(x, "hi", y)
+===
+SourceFile@0..12
+  TupleExpr@0..12
+    LParen@0..1 "("
+    VariableRef@1..2
+      Ident@1..2 "x"
+    Comma@2..3 ","
+    Whitespace@3..4 " "
+    StringLiteral@4..8
+      String@4..8 "\"hi\""
+    Comma@8..9 ","
+    Whitespace@9..10 " "
+    VariableRef@10..11
+      Ident@10..11 "y"
+    RParen@11..12 ")"
